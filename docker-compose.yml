@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:4.2
+    container_name: myapp-mongo
+    networks:
+      - myapp-network
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+  app:
+    build: .
+    container_name: myapp-app
+    networks:
+      - myapp-network
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb+srv://cesar0in16:rancher15@cluster0.ufdyvoo.mongodb.net/db_alumnos?retryWrites=true&w=majority
+    command: node app.js
+
+networks:
+  myapp-network:
+
+volumes:
+  mongo-data:

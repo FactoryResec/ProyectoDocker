@@ -1,0 +1,16 @@
+Para ejecutar el proyecto y meterlo dentro de contenedores 
+docker-compose up --build
+
+docker images
+
+Esto te dará una lista de todas tus imágenes Docker. Encuentra la que quieres subir y toma nota de su ID. Luego, etiqueta la imagen con el siguiente comando:
+ejemplo: 
+            
+docker tag 961f176f617c  cesargod/crud_mongodb:latest
+
+Reemplazar: docker tag ID_DE_LA_IMAGEN usuario_docker/crud_mongodb:latest
+
+Una vez que hayas etiquetado correctamente tu imagen, puedes subirla a Docker Hub usando el siguiente comando:
+docker push usuario_docker/crud_mongodb
+Ejemplo
+docker push cesargod/crud_mongodb
